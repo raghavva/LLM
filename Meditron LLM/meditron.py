@@ -163,45 +163,5 @@ query = "Will a side effect of this be skin rashes on hands or legs? "
 result = qa({"query": query, "chat_history": chat_history})
 print(result)
 
-!pip install -q streamlit
 
-# Commented out IPython magic to ensure Python compatibility.
-# %%writefile app.py
-# import streamlit as st
-# 
-# x = st.slider('Select a value')
-# st.write(x, 'squared is', x * x)
 
-!npm install localtunnel
-
-!streamlit run /content/app.py &>/content/logs.txt &
-
-! wget -q -O - ipv4.icanhazip.com
-
-!npx localtunnel --port 8501
-
-!pip install streamlit pyngrok
-
-# Import necessary libraries
-import streamlit as st
-from pyngrok import ngrok
-
-ngrok.set_auth_token("2i4ZwPEy9h8lE2i3ugx42SVS4xk_25SDUAdUf3QLT6ncmTDot")
-# Define your Streamlit app
-def run_app():
-    st.title("Hello, Streamlit!")
-    st.write("This is a simple Streamlit app running in Google Colab!")
-
-# Create and launch a public URL using ngrok
-public_url = ngrok.connect(port='8501')
-print(f"Streamlit app is running at: {public_url}")
-
-# Run the Streamlit app
-with open('app.py', 'w') as f:
-    f.write("""
-import streamlit as st
-
-st.title("Hello, Streamlit!")
-st.write("This is a simple Streamlit app running in Google Colab!")
-""")
-!streamlit run app.py --server.port 8501
